@@ -3,6 +3,7 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 
+import authMiddleware from "./middleware/authMiddleware.ts";
 import authRoutes from "./routes/authRoutes.ts";
 import todoRoutes from "./routes/todoRoutes.ts";
 
@@ -20,7 +21,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.use("/auth", authRoutes);
-app.use("/todos", todoRoutes);
+app.use("/todos", authMiddleware, todoRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
