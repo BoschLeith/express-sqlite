@@ -11,11 +11,14 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "A fullstack application using Express, SQLite, JWT Authentication and TypeScript",
+  "description": "A dockerized fullstack application using Express, PostgreSQL, Prisma, JWT Authentication and TypeScript",
   "dependencies": {
+    "@prisma/client": "^6.2.1",
     "bcryptjs": "^2.4.3",
     "express": "^4.21.2",
-    "jsonwebtoken": "^9.0.2"
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.13.1",
+    "prisma": "^6.2.1"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
