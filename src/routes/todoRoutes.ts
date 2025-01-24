@@ -16,11 +16,17 @@ router.get("/", (req: Request, res: Response) => {
 
 router.post("/", async (req: Request, res: Response) => {
   const { task } = req.body;
+  const userId = req.userId;
+
+  if (userId === undefined) {
+    res.status(400).json({ error: "User ID is required" });
+    return;
+  }
 
   const todo = await prisma.todo.create({
     data: {
       task,
-      userId: req.userId,
+      userId,
     },
   });
 
