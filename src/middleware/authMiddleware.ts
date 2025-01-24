@@ -2,12 +2,17 @@ import type { NextFunction, Request, Response } from "express";
 
 import jwt from "jsonwebtoken";
 
-interface CustomRequest extends Request {
-  userId?: string;
+// Extend the Request interface to include userId
+declare global {
+  namespace Express {
+    interface Request {
+      userId?: number;
+    }
+  }
 }
 
 const authMiddleware = (
-  req: CustomRequest,
+  req: Request,
   res: Response,
   next: NextFunction
 ): void => {
@@ -28,7 +33,7 @@ const authMiddleware = (
       return res.status(401).send({ message: "Invalid token" });
     }
 
-    req.userId = (decoded as { id: string }).id;
+    req.userId = (decoded as { id: number }).id;
     next();
   });
 };
