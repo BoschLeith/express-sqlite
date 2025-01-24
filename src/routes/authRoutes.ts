@@ -2,7 +2,6 @@ import bcrypt from "bcryptjs";
 import express, { type Request, type Response } from "express";
 import jwt from "jsonwebtoken";
 
-import db from "../db.ts";
 import prisma from "../prismaClient.ts";
 
 interface User {
