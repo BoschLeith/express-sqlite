@@ -4,8 +4,8 @@ import prisma from "../prismaClient.ts";
 
 const router = express.Router();
 
-router.get("/", (req: Request, res: Response) => {
-  const todos = prisma.todo.findMany({
+router.get("/", async (req: Request, res: Response) => {
+  const todos = await prisma.todo.findMany({
     where: {
       userId: req.userId,
     },
